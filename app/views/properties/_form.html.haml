@@ -1,0 +1,132 @@
+= form_for(@property) do |f|
+  - if @property.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@property.errors.count, "error")
+        prohibited this property from being saved:
+      %ul
+        - @property.errors.full_messages.each do |message|
+          %li= message
+  .field
+    = f.label :street_number
+    %br/
+    = f.number_field :street_number
+  .field
+    = f.label :street_name
+    %br/
+    = f.text_field :street_name
+  .field
+    = f.label :unit_number
+    %br/
+    = f.text_field :unit_number
+  .field
+    = f.label :city
+    %br/
+    = f.text_field :city
+  .field
+    = f.label :zip
+    %br/
+    = f.number_field :zip
+  .field
+    = f.label :location
+    %br/
+    = f.text_field :location
+  .field
+    = f.label :full_address
+    %br/
+    = f.text_field :full_address
+  .field
+    = f.label :property_type
+    %br/
+    = f.select :property_type, collection: ["Home","Multi-Family","Apartment","Land"]
+  .field
+    = f.label :short_description
+    %br/
+    = f.text_area :short_description
+  .field
+    = f.label :description
+    %br/
+    = f.text_area :description
+  .field
+    = f.label :status
+    %br/
+    = f.text_field :status
+  .field
+    = f.label :current_list_price
+    %br/
+    = f.text_field :current_list_price
+  .field
+    = f.label :sold_price
+    %br/
+    = f.text_field :sold_price
+  .field
+    = f.label :sqft
+    %br/
+    = f.text_field :sqft
+  .field
+    = f.label :sqft_price
+    %br/
+    = f.text_field :sqft_price
+  .field
+    = f.label :lot_sqft
+    %br/
+    = f.text_field :lot_sqft
+  .field
+    = f.label :year_built
+    %br/
+    = f.number_field :year_built
+  .field
+    = f.label :listing_office
+    %br/
+    = f.text_field :listing_office
+  .field
+    = f.label :condition
+    %br/
+    = f.text_field :condition
+  .field
+    = f.label :bedrooms
+    %br/
+    = f.number_field :bedrooms
+  .field
+    = f.label :half_bathrooms
+    %br/
+    = f.text_field :half_bathrooms
+  .field
+    = f.label :full_bathrooms
+    %br/
+    = f.number_field :full_bathrooms
+  %div
+    = f.label :has_garage
+    %br/
+    = f.check_box :has_garage
+    %br/
+  :javascript
+    $(document).ready(function(){
+        $('input[name="property[has_garage]"]').click(function(){
+          if($(this).attr("value")=="1"){
+          $("#property_garage_size").toggle();
+          }
+          });
+        });
+  #property_garage_size.field{:style => "display:none;"}
+    = f.label :garage_size
+    %br/
+    = f.number_field :garage_size
+  .field
+    = f.label :favorited
+    %br/
+    = f.number_field :favorited
+  .field
+    = f.label :fake_favorited
+    %br/
+    = f.number_field :fake_favorited
+  .field
+    = f.label :featured
+    %br/
+    = f.file_field :featured
+  %br/
+  %p
+    tu madre
+  = file_field_tag "images[]", type: :file, multiple: true
+  .actions
+    = f.submit

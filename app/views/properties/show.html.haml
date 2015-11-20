@@ -1,0 +1,124 @@
+- navigation render 'navigation/interior'
+- body_class 'property-show-page'
+/ <p id="notice"><haml_loud> notice </haml_loud></p>
+%section.full-address
+  .contianer-fluid
+    .row
+      .col-sm-10.col-sm-offset-1
+        %h3
+          = @property.street_number
+          = @property.street_name
+          , #{@property.city}, FL #{@property.zip}
+.container-fluid
+  .row
+    .col-sm-12{:style => "padding:0;"}
+      .owl-carousel
+        - @property.images.each do |img|
+          = image_tag img.image(:original), class: "item img-responsive"
+:javascript
+  $(".owl-carousel").owlCarousel({
+      afterUpdate: function () {
+          updateSize();
+      },
+      afterInit:function(){
+          updateSize();
+      },
+      items: 3,
+      center: true,
+      navRewind:true,
+      loop:true,
+      margin:0,
+      nav:true,
+      navText:["<i class='fa fa-angle-left fa-5x'></i>","<i class='fa fa-angle-right fa-5x'></i>"]
+  });
+  function updateSize(){
+      var minHeight=parseInt($('.owl-item').eq(0).css('height'));
+      $('.owl-item').each(function () {
+          var thisHeight = parseInt($(this).css('height'));
+          minHeight=(minHeight<=thisHeight?minHeight:thisHeight);
+      });
+      $('.owl-wrapper-outer').css('height',minHeight+'px');
+  }
+%section.property-info
+  .container-fluid
+    .row
+      .col-sm-10.col-sm-offset-1
+        .col-sm-8
+          .address
+            %h2
+              = @property.full_address
+              - unless @property.unit_number.blank?
+                , Unit##{@property.unit_number}
+              %br/
+              = @property.city
+              , FL #{@property.zip}
+          .property-description
+            %p= raw @property.description
+        .col-sm-4
+          .property-box
+            .property-type
+              %p
+                %span Property type:
+                %span.the-property
+                  %i.fa.fa-home.fa-1_5x
+                  = @property.property_type
+            .property-features
+              .features
+                %ul
+                  %li
+                    %img.first{:alt => "Bedrooms", :src => "https://s3-us-west-2.amazonaws.com/kasa-dev/images/property-icons/bedroom.png"}/
+                    = @property.bedrooms
+                  %li
+                    %img{:alt => "Bathroom", :src => "https://s3-us-west-2.amazonaws.com/kasa-dev/images/property-icons/bathroom.png"}/
+                    = @property.full_bathrooms
+                    = @property.half_bathrooms
+                  - unless @property.has_garage == false
+                    %li
+                      %img{:alt => "Garage", :src => "https://s3-us-west-2.amazonaws.com/kasa-dev/images/property-icons/garage.png"}/
+                      = @property.garage_size
+            .more-info
+              %p
+                %b Other Features:
+              %p
+                Built #{@property.year_built}
+                - @property.features.each do |f|
+                  , #{f.name}
+              %p
+                %a.k-blue.mr-15{:href => "#"} Favorite
+                %a.k-blue{:href => "#"} Share
+              %hr/
+              .row
+                .col-md-8
+                  %h2= number_to_currency(@property.current_list_price, :unit => "$")
+                  %p.sqft-price
+                    = number_to_currency((@property.current_list_price/@property.sqft), :unit => "$", :precision => 0)
+                    \/sf
+                .col-md-4
+                  %p.status.mt-15
+                    %b= @property.status
+                  %p.mt-15
+                    %b
+                      = ((Time.zone.now - @property.created_at) / 3600).to_i.round
+                      hrs ago
+            .mt-10
+            .row
+              .col-sm-12
+                %a.create-an-offer{:href => "#"} CREATE AN OFFER
+            .mt-10
+            .row
+              .col-sm-12
+                %a.request-showing{:href => "#"} REQUEST SHOWING
+            .mt-10
+            .row
+              .col-sm-12
+                %a.request-info{:href => "#"} Request More Info
+            .mt-20
+            .row
+              .col-sm-12
+                %p.learn-more
+                  Get a
+                  %b $6,475
+                  refund when you buy with KASA.
+                  %a.k-blue{:href => "#"} Learn more
+|
+= link_to 'Back', properties_path

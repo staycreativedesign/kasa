@@ -1,0 +1,71 @@
+- navigation render 'navigation/interior'
+- body_class 'property-listing'
+%p#notice= notice
+.container-fluid
+  .row.pr-25
+    .col-sm-12.col-md-12
+      %form.form-inline
+        .form-group.ml-6em
+          %input#exampleInputName2.form-control{:placeholder => "Address, City, or Zip", :type => "text"}/
+        .form-group.ml-1-5em
+          %label{:for => "exampleInputEmail2"}
+            %i.fa.fa-usd.fa-size
+          %select.form-control
+            %option Any Price
+            %option 2
+            %option 3
+            %option 4
+            %option 5
+        .form-group.ml-1-5em
+          %label{:for => "exampleInputEmail2"}
+            = image_tag("bedroom-icon.png", class: "mr-5")
+          %select.form-control
+            %option All
+            %option 2
+            %option 3
+            %option 4
+            %option 5
+        .form-group.ml-1-5em
+          %label{:for => "exampleInputEmail2"}
+            = image_tag("icon-bathroom.png", class: "mr-5")
+          %select.form-control
+            %option All
+            %option 2
+            %option 3
+            %option 4
+            %option 5
+        .form-group.ml-1-5em.mt-5
+          %label{:for => "exampleInputEmail2"}
+            = image_tag("icon-presets.png", class: "mr-5")
+            More Filter
+        .form-group.pull-right
+          %label{:for => "exampleInputEmail2"}
+            = image_tag("icon-list-view.png", class: "mr-5")
+            List view
+  .row.pt-25
+    .col-sm-7
+      = image_tag("googlemaps-template.jpg", class: "img-responsive")
+    .col-sm-5
+      .row.pb-20
+        .col-sm-7
+          .form-group
+            %p.pull-left.sort-by
+              Sort By:
+            %select.form-control.pull-left.sort-by-select
+              %option All
+              %option Price - High to Low
+              %option Price - Low to High
+        .col-sm-5.pull-left.text-right
+          %p.pr-25.mt-5
+            = Property.all.count
+            Properties
+      - Property.all.each do |prop|
+        .row.pb-20
+          .col-sm-7
+            = image_tag("house.jpg", class: "img-responsive")
+          .col-sm-5
+            %p Name Goes Here
+            %p City Goes Here
+            %h4
+              %b= prop.monetize
+

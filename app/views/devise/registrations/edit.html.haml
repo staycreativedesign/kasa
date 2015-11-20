@@ -1,0 +1,41 @@
+- navigation render 'navigation/interior'
+- body_class 'login'
+.logo
+  = link_to (image_tag 'https://s3-us-west-2.amazonaws.com/kasa-dev/images/Kasa.svg', class: 'img-responsive', alt: 'Kasa'), root_path
+.content
+  %h3 Hello!
+  %p.hint{:style => "text-align:center;"}
+    Contact us if you need any special assistance
+  = form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+    - if notice
+      %p.alert.alert-success= notice
+    - unless devise_error_messages!.empty?
+      .alert.alert-danger
+        %span= devise_error_messages!
+    .form-group
+      %label.control-label.visible-ie8.visible-ie9 Full Name
+      = f.text_field :name, class: 'form-control placeholder-no-fix', placeholder: 'Full Name'
+    .form-group
+      / ie8, ie9 does not support html5 placeholder, so we just show field title for that
+      %label.control-label.visible-ie8.visible-ie9 Email
+      = f.email_field :email, class: 'form-control placeholder-no-fix', placeholder: 'Email'
+    .form-group
+      / ie8, ie9 does not support html5 placeholder, so we just show field title for that
+      %label.control-label.visible-ie8.visible-ie9 Your Phone Number
+      = f.text_field :phone, class: 'form-control placeholder-no-fix', placeholder: 'Your Phone Number'
+    .form-group
+      %label.control-label.visible-ie8.visible-ie9 Password
+      = f.password_field :password, class: 'form-control placeholder-no-fix', placeholder: 'Password'
+    .form-group
+      %label.control-label.visible-ie8.visible-ie9 Re-type Your Password
+      = f.password_field :password_confirmation, class: 'form-control placeholder-no-fix', placeholder: 'Re-type Your Password'
+    %p.hint{:style => "text-align:center;"}
+      Must confirm your current password to change password
+    .form-group
+      %label.control-label.visible-ie8.visible-ie9 Current Password?
+      = f.password_field :current_password, class: 'form-control placeholder-no-fix', placeholder: 'Current Password?'
+    .form-actions
+      = link_to "Back", root_path, class: 'btn btn-default'
+      = f.submit "Update", class: 'btn btn-success uppercase pull-right'
+.copyright
+  2015 © Kasa.

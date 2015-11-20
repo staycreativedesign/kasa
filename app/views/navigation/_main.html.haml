@@ -1,0 +1,9 @@
+%nav.navbar.navbar-static-top
+  .container-fluid
+    .col-xs-12
+      .row.vertical-align
+        .col-xs-4
+          = link_to (image_tag 'https://s3-us-west-2.amazonaws.com/kasa-dev/images/kasa-logo-white.svg', alt: 'Kasa', class: 'img-responsive'), root_path, class: 'navbar-brand'
+        .col-xs-4.col-xs-offset-4
+          .pull-right
+            = render 'navigation/rightitems'

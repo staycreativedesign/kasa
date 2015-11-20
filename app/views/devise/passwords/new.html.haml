@@ -1,0 +1,16 @@
+- navigation render 'navigation/interior'
+- body_class 'login'
+.logo
+  = link_to (image_tag 'https://s3-us-west-2.amazonaws.com/kasa-dev/images/Kasa.svg', class: 'img-responsive', alt: 'Kasa'), root_path
+.content
+  %h3 Forget Password ?
+  %p Enter your e-mail address below to reset your password.
+  = form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
+    - unless devise_error_messages!.empty?
+      .alert.alert-danger
+        %span= devise_error_messages!
+    .form-group
+      = f.email_field :email, class: 'form-control placeholder-no-fix', placeholder: 'Email'
+    .form-actions
+      = link_to 'Back', new_user_session_path, class: 'btn btn-default'
+      = f.submit "Submit", class: 'btn btn-success uppercase pull-right'

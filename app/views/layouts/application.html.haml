@@ -1,0 +1,15 @@
+!!!
+%html
+  %head
+    %meta{:charset => "utf-8"}/
+    %title Kasa
+    / <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    %meta{:content => "text/html; charset=utf-8", "http-equiv" => "Content-type"}/
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  %body{:class => "#{yield(:body_class)}"}
+    %header
+      = yield(:navigation)
+    = yield
+    = javascript_include_tag 'application-btm'

@@ -1,0 +1,47 @@
+- navigation render 'navigation/interior'
+- body_class 'login'
+.logo
+  = link_to (image_tag 'https://s3-us-west-2.amazonaws.com/kasa-dev/images/Kasa.svg', class: 'img-responsive', alt: 'Kasa'), root_path
+.content
+  %h3.form-title Log in
+  = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+    - if alert
+      .alert.alert-danger
+        %span= alert
+    .form-group
+      / ie8, ie9 does not support html5 placeholder, so we just show field title for that
+      %label.control-label.visible-ie8.visible-ie9 Username
+      = f.email_field :email, class: 'form-control form-control-solid placeholder-no-fix', placeholder: 'Username', autocomplete: 'on'
+    .form-group
+      %label.control-label.visible-ie8.visible-ie9 Password
+      = f.password_field :password, class:'form-control form-control-solid placeholder-no-fix', placeholder: "Password", autocomplete: "off"
+    .form-actions
+      = f.submit "Login", class: 'btn btn-success uppercase'
+      - if devise_mapping.rememberable?
+        %label.rememberme.check
+          = f.check_box :remember_me
+          Remember
+      = link_to 'Forgot Password', new_user_password_path, class: 'forget-password'
+  .login-options
+    %h4 Or login with
+    %ul.social-icons
+      %li
+        %a.social-icon-color.facebook{"data-original-title" => "facebook", :href => "javascript:;"}
+      %li
+        %a.social-icon-color.twitter{"data-original-title" => "Twitter", :href => "javascript:;"}
+      %li
+        %a.social-icon-color.googleplus{"data-original-title" => "Goole Plus", :href => "javascript:;"}
+      %li
+        %a.social-icon-color.linkedin{"data-original-title" => "Linkedin", :href => "javascript:;"}
+  .create-account
+    %p
+      = link_to 'Create an Account', new_user_registration_path, class: 'uppercase'
+.copyright
+  2015 © Kasa.
+:javascript
+  jQuery(document).ready(function() {
+  Metronic.init(); // init metronic core components
+  Layout.init(); // init current layout
+  Login.init();
+  Demo.init();
+  });

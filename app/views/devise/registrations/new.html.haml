@@ -1,0 +1,45 @@
+- navigation render 'navigation/interior'
+- body_class 'login'
+.logo
+  = link_to (image_tag 'https://s3-us-west-2.amazonaws.com/kasa-dev/images/Kasa.svg', class: 'img-responsive', alt: 'Kasa'), root_path
+.content
+  %h3 Sign Up
+  %p.hint
+    Enter your personal details below:
+  = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+    - unless devise_error_messages!.empty?
+      .alert.alert-danger
+        %span= devise_error_messages!
+    .form-group
+      %label.control-label.visible-ie8.visible-ie9 Full Name
+      = f.text_field :name, class: 'form-control placeholder-no-fix', placeholder: 'Full Name'
+    .form-group
+      / ie8, ie9 does not support html5 placeholder, so we just show field title for that
+      %label.control-label.visible-ie8.visible-ie9 Email
+      = f.email_field :email, class: 'form-control placeholder-no-fix', placeholder: 'Email'
+    .form-group
+      %label.control-label.visible-ie8.visible-ie9 Password
+      = f.password_field :password, class: 'form-control placeholder-no-fix', placeholder: 'Password'
+      %p{:style => "padding-left: 10px;"}
+        %em
+          = @minimum_password_length
+          characters minimum
+    .form-group
+      %label.control-label.visible-ie8.visible-ie9 Re-type Your Password
+      = f.password_field :password_confirmation, class: 'form-control placeholder-no-fix', placeholder: 'Re-type Your Password'
+    /
+      <div class="form-group margin-top-20 margin-bottom-20">
+      <label class="check">
+      <input type="checkbox" name="tnc"/> I agree to the <a href="javascript:;">
+      Terms of Service </a>
+      \& <a href="javascript:;">
+      Privacy Policy </a>
+      </label>
+      <div id="register_tnc_error">
+      </div>
+      </div>
+    .form-actions
+      = link_to "Back", new_user_session_path, class: 'btn btn-default'
+      = f.submit "Submit", class: 'btn btn-success uppercase pull-right'
+.copyright
+  2015 © Kasa.

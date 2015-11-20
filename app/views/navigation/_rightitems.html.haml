@@ -1,0 +1,6 @@
+- if user_signed_in?
+  = link_to 'Your Account', edit_user_registration_path, class: 'navi-links'
+  = link_to "Sign Out", destroy_user_session_path, :method => :delete, class: 'navi-links activo'
+- else
+  = link_to "Log In", new_user_session_path, class: 'navi-links'
+  = link_to "Sign Up", new_user_registration_path, class: 'navi-links activo'

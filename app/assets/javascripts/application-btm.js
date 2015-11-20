@@ -1,0 +1,10 @@
+//= require bootstrap-sprockets
+//= require jquery-migrate.min
+//= require jquery.blockui.min
+//= require jquery.cokie.min
+//= require jquery.uniform.min
+//= require jquery.validate.min
+//= require metronic
+//= require layout
+//= require demo
+//= require login

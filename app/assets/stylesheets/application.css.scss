@@ -1,0 +1,320 @@
+@import url(http://fonts.googleapis.com/css?family=Lato:100,300,400,700);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,600,700,300);
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "hover";
+@import "simple-line-icons.min";
+@import "uniform.default";
+@import "login";
+@import "components";
+@import "plugins";
+@import "layout";
+@import "darkblue";
+@import "custom";
+@import "owl.carousel";
+@import "font-awesome";
+
+
+// Variables
+$lato: 'Lato', sans-serif;
+$navy: #154067;
+
+// Table of Contents
+// 1. Global
+// 2. Navigation
+// 3. Home
+// 4. Sign up | Login
+// 5. Property List Page
+// 6. Property Show Page
+
+
+// Where the fun Starts!!!!!
+//         *****
+//         *****
+//         *****
+//         *****
+//         *****
+//         *****
+//       *********
+//         *****
+//          ***
+//           *
+
+
+// 1. Global
+
+body {background-color: #f7f7f7;}
+h1, h2, h3, h4, h5, h6, p, a {font-family: $lato;}
+
+.bg-red   { background-color: red; }
+.bg-blue  { background-color: blue; }
+.mr-5     { margin-right: 5px; }
+.mt-5     { margin-top: 5px; }
+.pr-15    { padding-right: 15px; }
+.pr-25    { padding-right: 25px; }
+.pt-25    { padding-top: 25px; }
+.pb-10    { padding-bottom: 10px; }
+.pb-20    { padding-bottom: 20px; }
+
+.vertical-align {
+  display: flex;
+  flex-direction: row;
+}
+
+.vertical-align > [class^="col-"],
+.vertical-align > [class*=" col-"] {
+  display: flex;
+  align-items: center;     /* Align the flex-items vertically */
+  // justify-content: center;
+  /* Optional, to align inner flex-items
+  horizontally within the column  */
+}
+
+.fa-2x {
+  font-size: 2em !important;
+}
+.fa-1_5x {
+  font-size: 1.5em !important;
+}
+
+.mt-10 {margin-top: 10px;}
+.mt-15 {margin-top: 15px;}
+.mt-20 {margin-top: 20px;}
+
+.mb-10 {margin-bottom: 10px;}
+
+.mr-15 {margin-right: 15px;}
+
+.k-blue {color:#154067}
+
+// 2. Navigation
+
+.navbar-brand {
+  height: auto;
+  width:200px;
+}
+.navbar-static-top {
+  border-width: 0;
+  position: absolute;
+  width: 100%;
+}
+.interior.navbar-static-top {
+  border-width: inherit;
+  position: inherit;
+  width: inherit;
+  background-color: white;
+  .navi-links {
+    color: #363636;
+    text-transform: uppercase;
+    margin: 0 10px;
+    font-weight: 300;
+    font-size: 18px;
+    // &:hover, &:active, &:focus {text-decoration: none; color:white;}
+}
+.activo {
+  background: #154067;
+  padding: 3px 15px;
+  color: white;
+}
+}
+.navi-links {
+  color: white;
+  text-transform: uppercase;
+  margin: 0 10px;
+  font-weight: 300;
+  font-size: 18px;
+  &:hover, &:active, &:focus {text-decoration: none; color:white;}
+}
+
+.navbar {
+  margin-bottom: 0px;
+  .pull-right {width:100%;text-align:right;}
+}
+
+// 3. Home
+
+.home-intro {
+  height: 100vh;
+  width: 100%;
+  position: relative;
+  background: url('https://s3-us-west-2.amazonaws.com/kasa-dev/images/kasa-home.jpg');
+  background-position: center center;
+  background-size: cover;
+  h1 {
+    color: white;
+    font-weight: 400;
+    text-align: center;
+    font-size: 60px;
+}
+p {text-align: center;color:white;font-weight: 300;font-size: 20px;}
+.get-started-btn {margin: 40px auto 0; width:100%; text-align: center;}
+.btn-center {width: 100%;border: solid 1px white;padding: 10px 0;text-transform: uppercase;text-decoration: none;color: white;}
+.hvr-sweep-to-bottom:hover, .hvr-sweep-to-bottom:focus, .hvr-sweep-to-bottom:active {color: black !important;}
+.hvr-sweep-to-bottom:before {background: white;}
+.v-center {position: absolute;top:0;bottom: 0;left: 0;right: 0;margin: auto;height: 40%;}
+@media (max-width: 767px) {.btn-center{margin: 5px 0;}}
+@media (max-width: 767px) {
+  .v-center{height: 60%;}
+  h1 {font-size: 40px;}
+  p {font-size: 15px;}
+}
+}
+@media (max-width: 736px) {
+  .home-intro {
+    height: auto;
+    min-height: 100vh;
+}
+}
+@media (max-height: 320px) {
+  .home-intro {
+    min-height: 120vh;
+}
+}
+
+// 4. Sign up | Login
+
+.setup {
+  background: #f7f7f7;
+}
+.login .content h3 {color:#154067;}
+.login .btn-success, .btn-success:active:hover, .btn-success.active:hover {color: #fff;background-color: #154067;border-color: #154067;}
+.login .content .form-actions .btn-default:hover {background-color: #fafaff;color: $navy;}
+
+// 5. Property List Page
+.property-listing {
+  .form-control {
+    color: #5f5f5f;
+    border: 1px solid #5f5f5f;
+    height: 28px;
+  }
+
+  .sort-by {
+    margin-right: 10px;
+    width: 25%;
+    margin-top: 5px;
+  }
+
+  .sort-by-select {
+    width: 60%;
+  }
+
+  label, .form-control {
+    font-size: .9em
+  }
+
+  ::-webkit-input-placeholder {
+    color: #5f5f5f;
+  }
+
+  .ml-6em{
+    margin-left: 6em
+  }
+
+  .ml-1-5em{
+    margin-left: 1.5em
+  }
+
+  .fa-size {
+    font-size: 18px;
+    margin-right: 8px;
+  }
+}
+
+
+
+// Property Show Page
+
+.property-show-page {
+  background: white;
+  overflow-x: hidden;
+
+  h3 {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    font-weight: 400;
+}
+.navbar {border-bottom: #e0e0e0 solid 1px;}
+.property-info {
+  padding: 70px 0;
+  h2 {margin-top: 0;margin-bottom: 50px;font-weight: 400;}
+}
+.more-info {
+  h2 {margin-top: 10px;margin-bottom: 10px;font-weight: 400;}
+  p {color:#4e4e4e;}
+  .status {text-transform: uppercase;}
+  .sqft-price {font-size: 20px;font-weight: 300;}
+}
+.property-description {
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 25px;
+}
+
+.property-box {
+  background: #f7f7f7;
+  padding: 30px 35px;
+}
+.property-type {
+  margin-bottom: 20px;
+  span {
+    font-size: 20px;
+    font-weight: 400;
+    margin-right: 20px;
+  }
+  .the-property {
+    font-size: 15px;
+    font-weight: 300;
+  }
+}
+.property-features {
+  width: 100%;
+
+  .features {
+    background-color: white;
+    ul {
+      padding: 20px;
+      list-style-type: none;
+      text-align: center;
+    }
+    li {display: inline-block;}
+
+    img {
+      max-width: 50px;
+      margin: 0 10px;
+    }
+    .first {margin: 0 10px 0 0}
+
+  }
+}
+}
+.create-an-offer {
+  background: #154067;
+  color: white;
+  width: 100%;
+  margin: 0;
+  text-align: center;
+  display: block;
+  padding: 15px 0;
+  transition: .2s all;
+  &:hover {color:#154067;background: white;text-decoration: none;}
+}
+
+.request-showing {
+  background: #555c6d;
+  color: white;
+  padding: 15px 0;
+  margin: 0;
+  display: block;
+  text-align: center;
+  width: 100%;
+  transition: .2s all;
+  &:hover {color:#555c6d;background: white;text-decoration: none;}
+}
+.request-info {
+  text-align: right;
+  color: #154067;
+  display: block;
+}
+.learn-more {
+  text-align: center;
+}

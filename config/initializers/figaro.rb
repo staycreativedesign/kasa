@@ -1,0 +1,1 @@
+Figaro.require_keys("AWS_BUCKET", "access_key_id", "secret_access_key", "RETS_LOGIN_URL", "RETS_USERNAME", "RETS_PASSWORD", "RETS_AGENT", "RETS_UA_PASSWORD", "RETS_VERSION")
