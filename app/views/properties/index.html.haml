@@ -64,8 +64,11 @@
           .col-sm-7
             = image_tag("house.jpg", class: "img-responsive")
           .col-sm-5
-            %p Name Goes Here
-            %p City Goes Here
+            %p
+              Bedrooms
+              = prop.bedrooms
+            %p
+              = prop.sqft
             %h4
               %b= prop.monetize
 
